@@ -12,6 +12,30 @@
             background: #fff;
             min-height: 100vh;
             color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .game-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .game-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .game-logo {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 1.5rem;
         }
 
         .game-title {
@@ -39,24 +63,100 @@
         }
 
         .controls {
-            gap: 1rem;
+            gap: 1.5rem;
             margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
 
-        .stats {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
+        @media (min-width: 768px) {
+            .controls {
+                gap: 2rem;
+            }
+            
+            .btn {
+                min-width: 180px;
+            }
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-radius: 20px;
+            padding: 1.5rem;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0.75rem;
+            background: #bfbfc2; /* Fondo gris claro para cada stat */
+            border-radius: 12px;
+            margin: 0.4rem 0;
+            box-shadow: 0 6px 14px rgba(16,24,40,0.04);
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            color: #7cc7e0;
+            width: 40px;
+            text-align: center;
+            margin-right: 1rem;
+        }
+
+        .stat-info {
+            flex: 1;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .stat-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+            margin: 0.5rem 0;
         }
 
         .board {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: 1.5rem;
             margin: 0 auto;
-            max-width: 800px;
+            width: 100%;
+            max-width: 900px;
+            padding: 1rem;
+        }
+
+        @media (min-width: 1200px) {
+            .board {
+                grid-template-columns: repeat(4, minmax(160px, 200px));
+                justify-content: center;
+            }
         }
 
         .memory-card {
@@ -95,13 +195,13 @@
             display: block !important;
         }
 
-        /* Asegura que la imagen siempre esté visible en cartas emparejadas */
+        /* Asegurar que la imagen siempre esté visible en cartas emparejadas */
         .memory-card.matched .card-front img {
             opacity: 1 !important;
             visibility: visible !important;
         }
 
-        /* Imagen dentro de la carta: ajusta y cubre el frente */
+        /* Imagen dentro de la carta*/
         .card-front img {
             width: 100%;
             height: 100%;
@@ -183,14 +283,54 @@
 
         /* Botón Inicio personalizado */
         .btn-inicio {
-            background: linear-gradient(45deg, #f39c12, #f1c40f);
+            background: linear-gradient(45deg, #5f5e5e, #727171);
             color: #222;
             border: none;
         }
         .btn-inicio:hover {
-            background: linear-gradient(45deg, #f1c40f, #f39c12);
+            background: linear-gradient(45deg, #49473f, #8b8884);
             color: #222;
             box-shadow: 0 5px 15px rgba(241,196,15,0.25);
+        }
+        /* Botón Empezar personalizado */
+        .btn-start {
+            background: #7cc7e0;
+            color: #042334;
+            border: none;
+            font-weight: 700;
+        }
+        .btn-start:hover {
+            background: #69b9d6;
+            color: #021926;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+        /* Botón Reiniciar personalizado */
+        .btn-reset {
+            background: #808080;
+            color: #ffffff;
+            border: none;
+            font-weight: 700;
+        }
+        .btn-reset:hover {
+            background: #6e6e6e;
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+        }
+        /* Estilo para botones deshabilitados (menos prominente) */
+        .btn:disabled, .btn[disabled] {
+            opacity: 0.6;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+            filter: grayscale(10%);
+        }
+
+        /* Fondo gris claro cuando el botón Reiniciar está deshabilitado */
+        .btn-reset:disabled, .btn-reset[disabled] {
+            background: #d3d3d8;
+            color: #6b6b6b;
+            opacity: 1; /* mantener legibilidad con el fondo claro */
+            filter: none;
         }
         .btn:hover {
             transform: translateY(-2px);
@@ -283,46 +423,89 @@
                 margin-bottom: 0.5rem;
             }
         }
+
+        @media (min-width: 1200px) {
+            .game-content {
+                padding: 2rem 0;
+            }
+
+            .memory-card {
+                transition: transform 0.3s ease;
+            }
+
+            .memory-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .game-logo {
+                max-width: 400px;
+            }
+
+            .game-title {
+                font-size: 3rem;
+            }
+
+            .stats-card {
+                max-width: 400px;
+                margin-top: 2rem;
+            }
+
+            .controls {
+                margin: 2rem auto 3rem;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container py-4">
-        <div class="d-flex justify-content-start mb-3">
-            <a href="index.html" class="btn btn-inicio">
-                <i class="fas fa-home fa-lg"></i>
-                <span class="ms-2">Inicio</span>
-            </a>
+        
+        <div class="d-flex justify-content-start mb-3 visually-hidden" aria-hidden="true">
+            <!-- ...existing code... -->
+        </div>
+        <div class="logo-container text-center mb-3">
+            <img src="images/LogoHorizontal.png" alt="Logo" class="game-logo">
         </div>
         <div class="mb-4">
             <h1 class="text-center mb-0 game-title">
-                <i class="fa-solid fa-puzzle-piece fa-beat" style="color: #7cc7e0;"></i>
-                ENCUENTRA LOS PARES
-                <i class="fa-solid fa-brain fa-beat" style="color: #7cc7e0;"></i>
+                ENCUENTRA<br>LOS PARES
             </h1>
         </div>
-        <div class="stats d-flex justify-content-around text-center">
-            <div>
-                <h5>Tiempo</h5>
-                <p id="timer" class="mb-0">60s</p>
-            </div>
-            <div>
-                <h5>Movimientos</h5>
-                <p id="moves" class="mb-0">0</p>
-            </div>
-        </div>
-
         <div class="controls d-flex justify-content-center mb-4">
-            <button id="startBtn" class="btn btn-success me-2">
+            <a href="index.html" class="btn btn-inicio me-2">
+                <i class="fas fa-home fa-lg"></i>
+                <span class="ms-2">Inicio</span>
+            </a>
+            <button id="startBtn" class="btn btn-start me-2">
                 <i class="fas fa-play fa-lg"></i>
                 <span class="ms-2">Empezar Juego</span>
             </button>
-            <button id="resetBtn" class="btn btn-warning me-2" disabled>
+            <button id="resetBtn" class="btn btn-reset me-2" disabled>
                 <i class="fas fa-redo fa-lg"></i>
                 <span class="ms-2">Reiniciar</span>
             </button>
         </div>
 
         <div class="board"></div>
+
+        <div class="stats-container mt-4">
+            <div class="stats-card">
+                <div class="stat-item">
+                    <i class="fas fa-clock stat-icon"></i>
+                    <div class="stat-info">
+                        <h5 class="stat-label">Tiempo</h5>
+                        <p id="timer" class="stat-value">60s</p>
+                    </div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <i class="fas fa-arrows-rotate stat-icon"></i>
+                    <div class="stat-info">
+                        <h5 class="stat-label">Movimientos</h5>
+                        <p id="moves" class="stat-value">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal Victoria -->
