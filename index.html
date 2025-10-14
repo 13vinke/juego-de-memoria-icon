@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Inicio</title>
+    <!-- Google Fonts - Metropolis -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metropolis:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #121978;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        /* Centrar el contenido principal verticalmente */
+        .full-height {
+            min-height: calc(100vh - 4rem); /* deja algo de espacio para el header si se añade */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Logo encima del título */
+        .site-logo {
+            display: block;
+            margin: 0 auto 0.5rem auto; /* menos espacio debajo del logo */
+            max-width: 120px; /* tamaño fijo máximo */
+            width: auto;
+            height: auto;
+            /* animación con ligero scale para enfatizar la entrada */
+            animation: fadeScaleIn 500ms cubic-bezier(.2,.8,.2,1) both;
+            animation-delay: 0s;
+        }
+
+        /* Título hero semántico con líneas separadas */
+        .hero-title {
+            font-family: 'Metropolis', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            /* animación escalonada: título aparece después del logo */
+            animation: fadeScaleIn 700ms ease-in;
+            animation-delay: 200ms;
+        }
+
+        /* Respecto a usuarios que prefieren reducir animaciones */
+        @media (prefers-reduced-motion: reduce) {
+            .site-logo, .hero-title, h1, .btn-custom {
+                animation: none !important;
+            }
+        }
+
+        .container {
+            margin-top: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .card-body {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Botón personalizado: ancho según contenido y color especificado */
+        .btn-custom {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #7cc7e0;
+            color: #042334;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-family: 'Metropolis', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 1000;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            min-width: 200px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: none;
+            border: none;
+            animation: btnBounce 1.5s ease-in-out infinite;
+            transition: transform 0.2s;
+        }
+
+        .btn-custom:hover {
+            background-color: #69b9d6;
+            color: #021926;
+            animation-play-state: paused;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* animación combinada de fade + scale para el logo */
+        @keyframes fadeScaleIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Animación de rebote para el botón */
+        @keyframes btnBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2.4rem;
+                margin: 1rem 0;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .game-card {
+                margin-bottom: 1rem;
+            }
+
+            .btn-custom {
+                padding: 0.8rem 2rem;
+                font-size: 1.2rem;
+                min-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container full-height">
+        <div class="w-100">
+            <img src="images/logo.png" alt="Logo" class="site-logo">
+            <h1 class="hero-title">ENCUENTRA<br>TU ICONO<br>EMPRESARIAL</h1>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4 mb-4 mx-auto text-center mt-5">
+                    <a href="memoria.html" class="btn-custom">Jugar</a>
+                </div>
+            
+        </div>
+    </div>
+
+    <!-- Bootstrap JS bundle -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script>
+            // Si la animación CSS no se aplica, usar JS para rebote
+            document.addEventListener('DOMContentLoaded', function() {
+                var btn = document.querySelector('.btn-custom');
+                if (btn) {
+                    var supportsAnimation = window.getComputedStyle(btn).animationName !== 'none';
+                    if (!supportsAnimation) {
+                        let up = true;
+                        setInterval(function() {
+                            btn.style.transform = up ? 'translateY(-15px)' : 'translateY(0)';
+                            up = !up;
+                        }, 750);
+                    }
+                }
+            });
+            </script>
+</body>
+</html>
